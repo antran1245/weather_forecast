@@ -3,4 +3,4 @@ from flask import render_template, request, session
 
 @app.route('/')
 def main():
-    return ('<p>Hello World</p>')
+    return render_template('index.html')
