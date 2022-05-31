@@ -5,11 +5,31 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
         <title>Home</title>
     </head>
     <body>
         <div class="container">
-            hi
+            <div class="row">
+                <h2>{{data.location.name}}</h2>
+            </div>
+            <div class="row">
+                {%for forecast in data.forecast.forecastday%}
+                <div class="col-4">
+                    <div class="card">
+                        <h3>{{forecast["date"]}}</h3>
+                        <img src="{{forecast.day.condition.icon}}" alt="{{forecast.day.condition.icon}}"/>
+                        <p>{{forecast.day.condition.text}}</p>
+                        <ul>
+                            <li>Sunrise at: {{forecast.astro.sunrise}}</li>
+                            <li>Sunset at: {{forecast.astro.sunset}}</li>
+                            <li>Moonrise at: {{forecast.astro.moonrise}}</li>
+                            <li>Moonset at: {{forecast.astro.moonset}}</li>
+                        </ul>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
         </div>
     </body>
 </html>
