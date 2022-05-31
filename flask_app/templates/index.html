@@ -17,7 +17,7 @@
                 {%for forecast in data.forecast.forecastday%}
                 <div class="col-4">
                     <div class="card">
-                        <h3>{{forecast["date"]}}</h3>
+                        <h3>{{date[loop.index]}}</h3>
                         <img src="{{forecast.day.condition.icon}}" alt="{{forecast.day.condition.icon}}"/>
                         <p>{{forecast.day.condition.text}}</p>
                         <ul>
